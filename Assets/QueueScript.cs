@@ -35,7 +35,7 @@ public class QueueScript : MonoBehaviour
             
          }
          else if(Input.GetKeyDown(KeyCode.F)){
-            if(top <= count){
+            if(top < count){
                 // Vector3 movement = new Vector3(0.5f,0,0);
                 Destroy(arr[top]);
                 // plane = transform.Translate(movement);

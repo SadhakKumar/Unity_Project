@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class QueueScript : MonoBehaviour
@@ -9,7 +10,7 @@ public class QueueScript : MonoBehaviour
     public GameObject spawnObject;
     public GameObject plane;
     public TextMeshPro num;
-
+    public Text textElement;
 
 
     GameObject[] arr = new GameObject[5];
@@ -26,22 +27,29 @@ public class QueueScript : MonoBehaviour
 
          if(Input.GetKeyDown(KeyCode.Space)){
             if(count <= 3){
+                textElement.text = "";
                 Vector3 spawnPosition = new Vector3(5,1,0);
                 arr[count] = Instantiate(spawnObject,spawnPosition,Quaternion.identity);
                 arr[count].GetComponentInChildren<TextMeshPro>().text = number.ToString();
                 count++;
                 number++;
+            }else{
+                textElement.text = "OverFlow!";
             }
+            
             
          }
          else if(Input.GetKeyDown(KeyCode.F)){
             if(top < count){
                 // Vector3 movement = new Vector3(0.5f,0,0);
                 Destroy(arr[top]);
+                textElement.text = "";
                 // plane = transform.Translate(movement);
                 initial+=1;
                 plane.transform.position = new Vector3(initial,1,0);
                 top++;
+            }else{
+                textElement.text = "Underflow!";
             }
            
          }

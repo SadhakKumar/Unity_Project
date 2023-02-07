@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     public Text textElement;
     public Text pushCode;
     public Text overFlow;
+    public string input;    
 
     public Text popCode;
     public Text underFlow;
@@ -56,7 +57,7 @@ public class Spawner : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(0,6,1);
                 // spherePrefab.GetComponentInChildren<Text>().text = number.ToString();
                 arr[count] = Instantiate(spherePrefab, spawnPosition, Quaternion.identity);
-                arr[count].GetComponentInChildren<TextMeshPro>().text = number.ToString();
+                arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
                 // num.text = "1"; 
 
                 // spherePrefab.GetChild(0).GetComponent<TextMeshPro>().text = number.ToString();
@@ -112,7 +113,7 @@ public class Spawner : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(0,6,1);
                 // spherePrefab.GetComponentInChildren<Text>().text = number.ToString();
                 arr[count] = Instantiate(spherePrefab, spawnPosition, Quaternion.identity);
-                arr[count].GetComponentInChildren<TextMeshPro>().text = number.ToString();
+                arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
                 // num.text = "1"; 
 
                 // spherePrefab.GetChild(0).GetComponent<TextMeshPro>().text = number.ToString();
@@ -149,4 +150,8 @@ public class Spawner : MonoBehaviour
                 Debug.Log('u');
             }
     }
+    public void GetInput(string s){
+        input = s;
+        Debug.Log(s);
+    } 
 }

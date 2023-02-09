@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class QueueScript : MonoBehaviour
+public class circularQueue : MonoBehaviour
 {
-    
     public GameObject spawnObject;
-    public GameObject plane;
+    // public GameObject plane;
     public TextMeshPro num;
     public Text textElement;
     // public InputField myInput;
@@ -52,19 +51,24 @@ public class QueueScript : MonoBehaviour
                 overFlow.color = Color.white;
                 popCode.color = Color.white;
                 underFlow.color = Color.white;
-                Vector3 spawnPosition = new Vector3(5,1,0);
+                Vector3 spawnPosition = new Vector3(count,1,0);
                 arr[count] = Instantiate(spawnObject,spawnPosition,Quaternion.identity);
                 arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
-                count++;
+                count = (count + 1) % 4;
                 number++;
-            }else{
-                popCode.color = Color.white;
-                underFlow.color = Color.white;
-                pushCode.color = Color.white;
-                overFlow.color = Color.green;
-                textElement.text = "OverFlow!";
-                // myInput.text = "";
+            }else if((count+1)%4 == top){
+                    popCode.color = Color.white;
+                    underFlow.color = Color.white;
+                    pushCode.color = Color.white;
+                    overFlow.color = Color.green;
+                    textElement.text = "OverFlow!";
 
+            }else{
+                count = (count+1)%4;
+                Vector3 spawnPosition = new Vector3(count,1,0);
+                arr[count] = Instantiate(spawnObject,spawnPosition,Quaternion.identity);
+                arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
+                
             }
             
             
@@ -83,7 +87,7 @@ public class QueueScript : MonoBehaviour
                 underFlow.color = Color.white;
                 // plane = transform.Translate(movement);
                 initial+=1;
-                plane.transform.position = new Vector3(initial,1,0);
+                // plane.transform.position = new Vector3(initial,1,0);
                 top++;
             }else{
                 pushCode.color = Color.white;
@@ -132,7 +136,7 @@ public class QueueScript : MonoBehaviour
             underFlow.color = Color.white;
                 // plane = transform.Translate(movement);
             initial+=1;
-            plane.transform.position = new Vector3(initial,1,0);
+            // plane.transform.position = new Vector3(initial,1,0);
             top++;
         }else{
                
@@ -146,5 +150,5 @@ public class QueueScript : MonoBehaviour
     public void GetInput(string s){
         input = s;
         Debug.Log(s);
-    } 
+    }
 }

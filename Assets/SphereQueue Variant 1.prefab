@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6982717318299586180, guid: 6acc6583f6ee9fa48b5d12818797e2bd, type: 3}
       propertyPath: m_Name
-      value: SphereQueue
+      value: SphereQueue Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6982717318299586233, guid: 6acc6583f6ee9fa48b5d12818797e2bd, type: 3}
       propertyPath: m_RootOrder

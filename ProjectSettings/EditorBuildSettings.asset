@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/menu.unity
     guid: dff6379828146a845b86906440c40442
+  - enabled: 1
+    path: Assets/circularQueue.unity
+    guid: eaa7c7601332ae64dbb2f08b2e0fb780
   m_configObjects: {}

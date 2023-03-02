@@ -12,18 +12,19 @@ public class circularQueue : MonoBehaviour
     public Text textElement;
     // public InputField myInput;
     public string input;    
+    public TextMeshProUGUI inputField;
 
     public Text pushCode;
     public Text overFlow;
     public Text popCode;
     public Text underFlow;
-    public Text topText;
-    public Text rear;
+    // public Text topText;
+    // public Text rear;
 
 
     GameObject[] arr = new GameObject[5];
-    int count = 0;
-    int top = 0;
+    int count = -1;
+    int top = -1;
     float initial = -0.5f;
     int number = 1;
 
@@ -35,16 +36,26 @@ public class circularQueue : MonoBehaviour
         // if(mainInputField)
 
          if(Input.GetKeyDown(KeyCode.Space)){
-            if(count <= 3){
-                Vector3 pos = rear.transform.position;
-                pos.x += 30;
-                rear.transform.position = pos;
+            if((count+1)%4 == top || (count == 3 && top == 0)){
+                    popCode.color = Color.white;
+                    underFlow.color = Color.white;
+                    pushCode.color = Color.white;
+                    overFlow.color = Color.green;
+                    textElement.text = "OverFlow!";
 
-                if(count == 0){
-                    Vector3 posi = topText.transform.position;
-                    posi.x += 30;
-                    topText.transform.position = posi;
-                }
+            }
+            else if(count == -1 && top == -1){
+                count = (count+1) % 4;
+                top += 1;
+                // Vector3 pos = rear.transform.position;
+                // pos.x += 30;
+                // rear.transform.position = pos;
+
+                // if(count == 0){
+                //     Vector3 posi = topText.transform.position;
+                //     posi.x += 30;
+                //     topText.transform.position = posi;
+                // }
 
                 textElement.text = "";
                 pushCode.color = Color.green;
@@ -54,17 +65,19 @@ public class circularQueue : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(count,1,0);
                 arr[count] = Instantiate(spawnObject,spawnPosition,Quaternion.identity);
                 arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
-                count = (count + 1) % 4;
+                // count = (count + 1) % 4;
                 number++;
-            }else if((count+1)%4 == top){
-                    popCode.color = Color.white;
-                    underFlow.color = Color.white;
-                    pushCode.color = Color.white;
-                    overFlow.color = Color.green;
-                    textElement.text = "OverFlow!";
-
-            }else{
+            } 
+            else{
                 count = (count+1)%4;
+                // Vector3 pos = rear.transform.position;
+                // pos.x += 30;
+                // rear.transform.position = pos;
+                textElement.text = "";
+                pushCode.color = Color.green;
+                overFlow.color = Color.white;
+                popCode.color = Color.white;
+                underFlow.color = Color.white;
                 Vector3 spawnPosition = new Vector3(count,1,0);
                 arr[count] = Instantiate(spawnObject,spawnPosition,Quaternion.identity);
                 arr[count].GetComponentInChildren<TextMeshPro>().text = input.ToString();
@@ -74,11 +87,18 @@ public class circularQueue : MonoBehaviour
             
          }
          else if(Input.GetKeyDown(KeyCode.F)){
-            if(top < count){
+            if(top == -1){
+                pushCode.color = Color.white;
+                overFlow.color = Color.white;
+                popCode.color = Color.white;
+                underFlow.color = Color.green;
+                textElement.text = "Underflow!";
+            }
+            else if(top == count){
                 // Vector3 movement = new Vector3(0.5f,0,0);
-                Vector3 posi = topText.transform.position;
-                posi.x += 30;
-                topText.transform.position = posi;
+                // Vector3 posi = topText.transform.position;
+                // posi.x += 30;
+                // topText.transform.position = posi;
                 Destroy(arr[top]);
                 textElement.text = "";
                 pushCode.color = Color.white;
@@ -88,13 +108,31 @@ public class circularQueue : MonoBehaviour
                 // plane = transform.Translate(movement);
                 initial+=1;
                 // plane.transform.position = new Vector3(initial,1,0);
-                top++;
+                top = -1;
+                count = -1;
+            }else if(top ==4){
+                Destroy(arr[top]);
+                top = 0;
+                // pushCode.color = Color.white;
+                // overFlow.color = Color.white;
+                // popCode.color = Color.white;
+                // underFlow.color = Color.green;
+                // textElement.text = "Underflow!";
             }else{
+                // Vector3 posi = topText.transform.position;
+                // posi.x += 30;
+                // topText.transform.position = posi;
+                Destroy(arr[top]);
+                textElement.text = "";
                 pushCode.color = Color.white;
                 overFlow.color = Color.white;
-                popCode.color = Color.white;
-                underFlow.color = Color.green;
-                textElement.text = "Underflow!";
+                popCode.color = Color.green;
+                underFlow.color = Color.white;
+                // plane = transform.Translate(movement);
+                initial+=1;
+                // plane.transform.position = new Vector3(initial,1,0);
+                top +=1;
+
             }
            
          }
@@ -151,4 +189,8 @@ public class circularQueue : MonoBehaviour
         input = s;
         Debug.Log(s);
     }
+    // public void clear(this InputField inputField){
+    //     inputField.Select();
+    //     inputField.text = "";
+    // }
 }

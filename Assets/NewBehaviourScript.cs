@@ -7,7 +7,7 @@ using TMPro;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public LineRenderer LineRenderer;
+    public LineRenderer line;
     public GameObject TreeNode0;
     public GameObject TreeNode1;
     public GameObject TreeNode2;
@@ -17,12 +17,15 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject TreeNode6;
     public string input;    
     public TextMeshProUGUI inputField;
+    // public Transform posi1;
+    // public Transform posi2;
     
     List<GameObject> unityGameObjects = new List<GameObject>();
     int index = 0;
     // Start is called before the first frame update
     void Start()
     {
+        line.positionCount = 3;
         unityGameObjects.Add(TreeNode0);
         unityGameObjects.Add(TreeNode1);
         unityGameObjects.Add(TreeNode2);
@@ -33,12 +36,12 @@ public class NewBehaviourScript : MonoBehaviour
         Debug.Log(unityGameObjects);  
         Debug.Log(unityGameObjects.Count);
         Debug.Log("hello world");
-        LineRenderer.startColor = Color.red;
-        LineRenderer.endColor = Color.red;
+        // LineRenderer.startColor = Color.red;
+        // LineRenderer.endColor = Color.red;
 
         // set width of the renderer
-        LineRenderer.startWidth = 0.3f;
-        LineRenderer.endWidth = 0.3f;
+        // LineRenderer.startWidth = 0.3f;
+        // LineRenderer.endWidth = 0.3f;
         Vector3 linePosi1 = new Vector3(0,4,1);
         Vector3 linePosi2 = new Vector3(-2,2,1);
 
@@ -59,15 +62,15 @@ public class NewBehaviourScript : MonoBehaviour
                 index++;
             }
              
-            // if(index == 1 || index == 2){
-            //     LineRenderer.SetPosition(0, unityGameObjects[0].Position);
-            //     LineRenderer.SetPosition(1, unityGameObjects[index].Position);
-            // }
+            if(index == 1 || index == 2){
+                line.SetPosition(0, unityGameObjects[0].transform.position);
+                line.SetPosition(1, unityGameObjects[index].transform.position);
+            }
            
             
         }
-        LineRenderer.SetPosition(0,TreeNode0.transform.position);
-        LineRenderer.SetPosition(1,TreeNode1.transform.position);
+        // line.SetPosition(0,posi1.position);
+        // line.SetPosition(1,posi2.position);
 
         
     }

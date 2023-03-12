@@ -192,6 +192,7 @@ public class NewBehaviourScript : MonoBehaviour
             if(index < 7){
                 unityGameObjects[index].SetActive(true);
                 unityGameObjects[index].GetComponentInChildren<TextMeshPro>().text = input.ToString();
+                inputField.text = "";
                 index++;
             }
              

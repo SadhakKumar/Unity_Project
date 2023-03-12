@@ -125,33 +125,33 @@ public class NewBehaviourScript : MonoBehaviour
     }
     public void traversal(){
         string preorder = "";
-        preorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString();
+        preorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString() + " ";
+        preorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        preorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        preorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        preorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        preorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
         preorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
         preordertext.text += preorder;
 
         string inorder = "";
-        inorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString();
+        inorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        inorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        inorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        inorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        inorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        inorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
         inorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
         inordertext.text += inorder;
 
 
         string postorder = "";
-        postorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString();
+        postorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        postorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        postorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        postorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        postorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+        postorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
         postorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString();
         postordertext.text += postorder;
 

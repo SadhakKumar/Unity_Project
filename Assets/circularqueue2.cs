@@ -20,7 +20,7 @@ public class circularqueue2 : MonoBehaviour
     public TextMeshProUGUI inputField;
     public TextMeshProUGUI overflowtext;
     public TextMeshProUGUI underflowtext;
-    public TextMeshProUGUI fronttext;
+    // public TextMeshProUGUI fronttext;
     public Text pushCode;
     public Text overFlow;
     public Text popCode;
@@ -56,7 +56,7 @@ public class circularqueue2 : MonoBehaviour
                 overFlow.color = Color.green;
                 Debug.Log("Overflow");
             }else{
-                fronttext.transform.position = posi[0];
+                
                 popCode.color = Color.white;
                 underFlow.color = Color.white;
                 pushCode.color = Color.green;
@@ -93,5 +93,47 @@ public class circularqueue2 : MonoBehaviour
     public void GetInput(string s){
         input = s;
         Debug.Log(s);
+    }
+    public void Insert(){
+        if(count == max){
+            overflowtext.text = "Overflow!!";
+            popCode.color = Color.white;
+            underFlow.color = Color.white;
+            pushCode.color = Color.white;
+            overFlow.color = Color.green;
+            Debug.Log("Overflow");
+        }else{
+                
+            popCode.color = Color.white;
+            underFlow.color = Color.white;
+            pushCode.color = Color.green;
+            overFlow.color = Color.white;
+            overflowtext.text = " ";
+            underflowtext.text = " ";
+            rear = (rear+1) % max;
+            unityGameObjects[rear].GetComponentInChildren<TextMeshPro>().text = input.ToString();
+            count++;
+        }
+        
+    }
+    public void Delete(){
+        if(count == 0){
+            popCode.color = Color.white;
+            underFlow.color = Color.green;
+            pushCode.color = Color.white;
+            overFlow.color = Color.white;
+            underflowtext.text = "Underflow!!";
+            Debug.Log("underflow");
+        }else{
+            popCode.color = Color.green;
+            underFlow.color = Color.white;
+            pushCode.color = Color.white;
+            overFlow.color = Color.white;
+            overflowtext.text = " ";
+            underflowtext.text = " ";
+            unityGameObjects[front].GetComponentInChildren<TextMeshPro>().text = "";
+            front = (front+1) % max;
+            count--;
+        }
     }
 }

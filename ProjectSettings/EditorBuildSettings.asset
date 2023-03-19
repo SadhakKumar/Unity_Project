@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/QueueScene.unity
-    guid: 203196644c059ad45b292fb0ee250c35
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: dff6379828146a845b86906440c40442
-  - enabled: 0
-    path: Assets/Scenes/circularQueue.unity
-    guid: eaa7c7601332ae64dbb2f08b2e0fb780
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/QueueScene.unity
+    guid: 203196644c059ad45b292fb0ee250c35
   - enabled: 1
     path: Assets/Scenes/circularqueue2.unity
     guid: 8395242a529aa2d459599603671bcfa0
   - enabled: 1
     path: Assets/Scenes/TreeScene.unity
     guid: cc3be68b249191a4897c2041178928a3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/circularQueue.unity
+    guid: eaa7c7601332ae64dbb2f08b2e0fb780
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

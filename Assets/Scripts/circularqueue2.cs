@@ -25,6 +25,11 @@ public class circularqueue2 : MonoBehaviour
     public Text overFlow;
     public Text popCode;
     public Text underFlow;
+    public Material materialrear;
+    public Material materialfront;
+    public Material materialred;
+
+
     int count = 0;
     int max = 8;
     int front = 0;
@@ -47,6 +52,7 @@ public class circularqueue2 : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        
         if(Input.GetKeyDown(KeyCode.Space)){
             if(count == max){
                 overflowtext.text = "Overflow!!";
@@ -64,6 +70,15 @@ public class circularqueue2 : MonoBehaviour
                 overflowtext.text = " ";
                 underflowtext.text = " ";
                 rear = (rear+1) % max;
+                if(count == 0){
+                    unityGameObjects[rear].GetComponent<Renderer>().material = materialrear;
+                }else{
+                    
+                    unityGameObjects[((rear+7)%max)].GetComponent<Renderer>().material = materialred;
+                    unityGameObjects[rear].GetComponent<Renderer>().material = materialrear;
+                    unityGameObjects[front].GetComponent<Renderer>().material = materialfront;
+
+                }
                 unityGameObjects[rear].GetComponentInChildren<TextMeshPro>().text = input.ToString();
                 count++;
             }
@@ -85,7 +100,9 @@ public class circularqueue2 : MonoBehaviour
                 underflowtext.text = " ";
                 unityGameObjects[front].GetComponentInChildren<TextMeshPro>().text = "";
                 front = (front+1) % max;
-                count--;
+                unityGameObjects[((front+7)%max)].GetComponent<Renderer>().material = materialred;
+                unityGameObjects[front].GetComponent<Renderer>().material = materialfront;
+                count--;    
             }
         }
 

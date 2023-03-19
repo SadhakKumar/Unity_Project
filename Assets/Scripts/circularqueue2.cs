@@ -128,6 +128,15 @@ public class circularqueue2 : MonoBehaviour
             overflowtext.text = " ";
             underflowtext.text = " ";
             rear = (rear+1) % max;
+            if(count == 0){
+                    unityGameObjects[rear].GetComponent<Renderer>().material = materialrear;
+                }else{
+                    
+                    unityGameObjects[((rear+7)%max)].GetComponent<Renderer>().material = materialred;
+                    unityGameObjects[rear].GetComponent<Renderer>().material = materialrear;
+                    unityGameObjects[front].GetComponent<Renderer>().material = materialfront;
+
+                }
             unityGameObjects[rear].GetComponentInChildren<TextMeshPro>().text = input.ToString();
             count++;
         }
@@ -150,6 +159,8 @@ public class circularqueue2 : MonoBehaviour
             underflowtext.text = " ";
             unityGameObjects[front].GetComponentInChildren<TextMeshPro>().text = "";
             front = (front+1) % max;
+            unityGameObjects[((front+7)%max)].GetComponent<Renderer>().material = materialred;
+            unityGameObjects[front].GetComponent<Renderer>().material = materialfront;
             count--;
         }
     }

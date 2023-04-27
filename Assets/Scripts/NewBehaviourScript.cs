@@ -7,12 +7,12 @@ using TMPro;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public LineRenderer line;
-    public LineRenderer line2;
-    public LineRenderer line3;
-    public LineRenderer line4;
-    public LineRenderer line5;
-    public LineRenderer line6;
+    // public LineRenderer line;
+    // public LineRenderer line2;
+    // public LineRenderer line3;
+    // public LineRenderer line4;
+    // public LineRenderer line5;
+    // public LineRenderer line6;
     public GameObject TreeNode0;
     public GameObject TreeNode1;
     public GameObject TreeNode2;
@@ -20,13 +20,8 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject TreeNode4;
     public GameObject TreeNode5;
     public GameObject TreeNode6;
-    public string input;    
-    public TextMeshProUGUI inputField;
-    public TextMeshProUGUI preordertext;
-    public TextMeshProUGUI inordertext;
-    public TextMeshProUGUI postordertext;
-
-    public Material material;
+    public Material material1;
+    public Material material2;
     // public Transform posi1;
     // public Transform posi2;
     
@@ -52,14 +47,16 @@ public class NewBehaviourScript : MonoBehaviour
         Debug.Log(unityGameObjects);  
         Debug.Log(unityGameObjects.Count);
         Debug.Log("hello world");
+
+        
         // line.startColor = Color.blue;
         // line.endColor = Color.blue;
 
         // set width of the renderer
         // LineRenderer.startWidth = 0.3f;
         // LineRenderer.endWidth = 0.3f;
-        Vector3 linePosi1 = new Vector3(0,4,1);
-        Vector3 linePosi2 = new Vector3(-2,2,1);
+        // Vector3 linePosi1 = new Vector3(0,4,1);
+        // Vector3 linePosi2 = new Vector3(-2,2,1);
 
 
         // LineRenderer.SetPosition(0,TreeNode0.transform.position);
@@ -72,134 +69,218 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.Space)){
-            if(index == 1){
-                // line.enabled = true;
-                line.material = material;
+        // if(Input.GetKeyDown(KeyCode.Space)){
+        //     if(index == 1){
+        //         // line.enabled = true;
+        //         line.material = material;
 
-            }
-            if(index == 2){   
-                // line2.enabled = true;
-                line2.material = material;
+        //     }
+        //     if(index == 2){   
+        //         // line2.enabled = true;
+        //         line2.material = material;
 
-            }
-            if(index == 3){
-                line3.material = material;
-                line3.enabled = true;
+        //     }
+        //     if(index == 3){
+        //         line3.material = material;
+        //         line3.enabled = true;
    
-            }
-            if(index == 4){
-                line4.material = material;
-                line4.enabled = true;
+        //     }
+        //     if(index == 4){
+        //         line4.material = material;
+        //         line4.enabled = true;
    
-            }
-            if(index == 5){
-                line5.material = material;
-                line5.enabled = true;
+        //     }
+        //     if(index == 5){
+        //         line5.material = material;
+        //         line5.enabled = true;
    
-            }
-            if(index == 6){
-                line6.material = material;
-                line6.enabled = true;
-                // traversal();
+        //     }
+        //     if(index == 6){
+        //         line6.material = material;
+        //         line6.enabled = true;
+        //         // traversal();
    
-            }
-            if(index < 7){
-                unityGameObjects[index].SetActive(true);
-                unityGameObjects[index].GetComponentInChildren<TextMeshPro>().text = input.ToString();
-                index++;
-            }
+        //     }
+        //     if(index < 7){
+        //         unityGameObjects[index].SetActive(true);
+        //         unityGameObjects[index].GetComponentInChildren<TextMeshPro>().text = input.ToString();
+        //         index++;
+        //     }
              
             
            
             
-        }
+        // }
         // line.SetPosition(0,posi1.position);
         // line.SetPosition(1,posi2.position);
 
+        Debug.Log("hello");
+    }
+    // public void GetInput(string s){
+    //     input = s;
+    //     Debug.Log(s);
+    // }
+
+    public void idk(){
+        StartCoroutine(preorder());
+    }
+    public void idk2(){
+        StartCoroutine(inorder());
+    }
+    public void idk3(){
+        StartCoroutine(postorder());
+    }
+
+    IEnumerator preorder(){
         
+        unityGameObjects[0].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[0].GetComponent<Renderer>().material = material1;
+        unityGameObjects[1].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[1].GetComponent<Renderer>().material = material1;
+        unityGameObjects[3].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[3].GetComponent<Renderer>().material = material1;
+        unityGameObjects[4].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[4].GetComponent<Renderer>().material = material1;
+        unityGameObjects[2].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[2].GetComponent<Renderer>().material = material1;
+        unityGameObjects[5].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[5].GetComponent<Renderer>().material = material1;
+        unityGameObjects[6].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[6].GetComponent<Renderer>().material = material1;
     }
-    public void GetInput(string s){
-        input = s;
-        Debug.Log(s);
-    }
-    public void traversal(){
-        string preorder = "";
-        preorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString() + " ";
-        preorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        preorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        preorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        preorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        preorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        preorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
-        preordertext.text += preorder;
-
-        string inorder = "";
-        inorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        inorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
-        inordertext.text += inorder;
-
-
-        string postorder = "";
-        postorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
-        postorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString();
-        postordertext.text += postorder;
-
-    }
-    public void Add(){
+    IEnumerator inorder(){
         
-            if(index == 1){
-                // line.enabled = true;
-                line.material = material;
+        unityGameObjects[3].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[3].GetComponent<Renderer>().material = material1;
+        unityGameObjects[1].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[1].GetComponent<Renderer>().material = material1;
+        unityGameObjects[4].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[4].GetComponent<Renderer>().material = material1;
+        unityGameObjects[0].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[0].GetComponent<Renderer>().material = material1;
+        unityGameObjects[5].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[5].GetComponent<Renderer>().material = material1;
+        unityGameObjects[2].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[2].GetComponent<Renderer>().material = material1;
+        unityGameObjects[6].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[6].GetComponent<Renderer>().material = material1;
+    }
+    IEnumerator postorder(){
+        
+        unityGameObjects[3].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[3].GetComponent<Renderer>().material = material1;
+        unityGameObjects[4].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[4].GetComponent<Renderer>().material = material1;
+        unityGameObjects[1].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[1].GetComponent<Renderer>().material = material1;
+        unityGameObjects[5].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[5].GetComponent<Renderer>().material = material1;
+        unityGameObjects[6].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[6].GetComponent<Renderer>().material = material1;
+        unityGameObjects[2].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[2].GetComponent<Renderer>().material = material1;
+        unityGameObjects[0].GetComponent<Renderer>().material = material2;
+        yield return new WaitForSeconds(1);
+        unityGameObjects[0].GetComponent<Renderer>().material = material1;
+    }
 
-            }
-            if(index == 2){   
-                // line2.enabled = true;
-                line2.material = material;
+    // public void traversal(){
+    //     string preorder = "";
+    //     preorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString() + " ";
+    //     preorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     preorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     preorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     preorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     preorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     preorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
+    //     preordertext.text += preorder;
 
-            }
-            if(index == 3){
-                line3.material = material;
-                line3.enabled = true;
+    //     string inorder = "";
+    //     inorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     inorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString();
+    //     inordertext.text += inorder;
+
+
+    //     string postorder = "";
+    //     postorder += unityGameObjects[3].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[4].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[1].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[5].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[6].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[2].GetComponentInChildren<TextMeshPro>().text.ToString()+ " ";
+    //     postorder += unityGameObjects[0].GetComponentInChildren<TextMeshPro>().text.ToString();
+    //     postordertext.text += postorder;
+
+    // }
+    // public void Add(){
+        
+    //         if(index == 1){
+    //             // line.enabled = true;
+    //             line.material = material;
+
+    //         }
+    //         if(index == 2){   
+    //             // line2.enabled = true;
+    //             line2.material = material;
+
+    //         }
+    //         if(index == 3){
+    //             line3.material = material;
+    //             line3.enabled = true;
    
-            }
-            if(index == 4){
-                line4.material = material;
-                line4.enabled = true;
+    //         }
+    //         if(index == 4){
+    //             line4.material = material;
+    //             line4.enabled = true;
    
-            }
-            if(index == 5){
-                line5.material = material;
-                line5.enabled = true;
+    //         }
+    //         if(index == 5){
+    //             line5.material = material;
+    //             line5.enabled = true;
    
-            }
-            if(index == 6){
-                line6.material = material;
-                line6.enabled = true;
-                // traversal();
+    //         }
+    //         if(index == 6){
+    //             line6.material = material;
+    //             line6.enabled = true;
+    //             // traversal();
    
-            }
-            if(index < 7){
-                unityGameObjects[index].SetActive(true);
-                unityGameObjects[index].GetComponentInChildren<TextMeshPro>().text = input.ToString();
-                inputField.text = "";
-                index++;
-            }
+    //         }
+    //         if(index < 7){
+    //             unityGameObjects[index].SetActive(true);
+    //             unityGameObjects[index].GetComponentInChildren<TextMeshPro>().text = input.ToString();
+    //             inputField.text = "";
+    //             index++;
+    //         }
              
             
            
             
         
-    }
+    // }
 
 }
